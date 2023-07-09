@@ -1,8 +1,12 @@
 type Query {
     posts: [Post]
     postById(id: ID): Post
+
+    customers: [Customer]
+    customerById(id: ID): Customer
 }
 
+#used for basic
 type Post {
     id: ID!
     text: String!
@@ -19,4 +23,27 @@ type Comment {
     id: ID!
     text: String!
     author: Author!
+}
+
+#used for spring based API's
+
+type Customer {
+    id: ID!
+    name: String!
+    address: Address
+    purchases: [Purchase]
+}
+
+type Address {
+    addressLine1: String!
+    addressLine2: String
+    pin: String!
+    state: String
+    country: String!
+}
+
+type Purchase {
+    txnId: ID!
+    customerId: ID!
+    amount: Float
 }
